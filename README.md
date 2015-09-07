@@ -61,7 +61,7 @@ class Main extend Sprite
 ```
 
 Show order dialog for example:
-```
+```Haxe
 function showOrderDialog():Void 
 {		
 	var paramsWindow = new Array<Dynamic>();
