@@ -60,8 +60,11 @@ class Main extend Sprite
 }
 ```
 
+
+
 Show order dialog for example:
 ```Haxe
+// More information: https://vk.com/dev/payments_steps
 function showOrderDialog():Void 
 {		
 	var paramsWindow = new Array<Dynamic>();
