@@ -59,3 +59,23 @@ class Main extend Sprite
 
 }
 ```
+
+Show order dialog for example:
+```
+function showOrderDialog():Void 
+{		
+	var paramsWindow = new Array<Dynamic>();
+	
+	paramsWindow.push("showOrderBox");
+	
+	var params = { 
+		type: 'item',
+		item: 'itemName'
+	}
+	
+	paramsWindow.push(params);
+
+	vk.callMethod(paramsWindow);
+
+}
+```
