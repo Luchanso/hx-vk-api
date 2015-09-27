@@ -136,7 +136,12 @@ class Connection
 		receivingLC.client.addEventListener(event, _callback);
 	}
 	
-	 var tempPhoto : ByteArray;
+	public function removeEventListener(event: String, _callback: CustomEvent -> Void)
+	{
+		receivingLC.client.removeEventListener(event, _callback);
+	}
+	
+	var tempPhoto : ByteArray;
 	
 	public function uploadWallPhoto(img : ByteArray, options : Dynamic, complete : Dynamic -> Void, error : Dynamic -> Void) : Void 
 	{
