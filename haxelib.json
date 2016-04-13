@@ -1,0 +1,10 @@
+{
+	"name": "hx-vk-api",
+	"url" : "https://github.com/Luchanso/hx-vk-api",
+	"license": "unlicense",
+	"tags": ["vk", "api"],
+	"description": "Haxe vk api",
+	"version": "0.0.1",
+	"releasenote": "Initial release.",
+	"contributors": ["Luchanso", "MrHunt"]
+}
