@@ -4,7 +4,6 @@ import flash.errors.Error;
 import flash.events.EventDispatcher;
 import flash.events.StatusEvent;
 import flash.net.LocalConnection;
-import lime.utils.ByteArray;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.net.URLLoader;
@@ -13,6 +12,7 @@ import openfl.net.URLRequest;
 import openfl.net.URLRequestHeader;
 import openfl.net.URLRequestMethod;
 import openfl.net.URLVariables;
+import openfl.utils.ByteArray;
 import vk.events.CustomEvent;
 
 /**
