@@ -1,4 +1,5 @@
 package vk;
+
 import vk.api.Connection;
 
 /**

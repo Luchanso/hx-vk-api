@@ -1,7 +1,12 @@
-package;
-import flash.events.Event;
+package vk;
+
+import openfl.events.Event;
 import openfl.display.Loader;
 import openfl.display.Sprite;
+import openfl.net.URLRequest;
+import openfl.system.ApplicationDomain;
+import openfl.system.LoaderContext;
+import openfl.system.SecurityDomain;
 
 enum PositionType {
 	HORIZONTAL;
@@ -14,11 +19,29 @@ enum PositionType {
  */
 class Ads
 {
-	public static function create(id : String, x : Float, y : Float, width : Int, height : Int, flashVars : Dynamic, count : Int = 4, isTest : Bool = true, typePosition : PositionType = PositionType.HORIZONTAL)
-	{	
+	public static function init(callback : Dynamic = null) 
+	{
+		var loader = new Loader();
+		var context = new LoaderContext(false, ApplicationDomain.currentDomain);
+		context.securityDomain = SecurityDomain.currentDomain;
+
+		loader.load(new URLRequest('//api.vk.com/swf/vk_ads.swf'), context);
+		
+		if (callback != null)
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, callback);
+	}
+	
+	public static function create(id : String, x : Float, y : Float, width : Float, height : Float, flashVars : Dynamic, count : Int = 4, isTest : Bool = true, typePosition : PositionType = null)
+	{
 		var mainVKBanner = new com.vk.MainVKBanner(id);
 		
 		var params = new com.vk.vo.BannersPanelVO(); // создание класса параметров баннера
+		
+		if (typePosition == null) 
+		{
+			typePosition = PositionType.HORIZONTAL;
+		}
+		
 		// изменение стандартных параметров:
 		if (isTest) 
 		{
@@ -47,9 +70,9 @@ class Ads
 		
 		params.ads_count = count;
 		
-		mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_COMPLETE, banner_onLoad);
-		mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_IS_EMPTY, banner_onAdsEmpty);
-		mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_ERROR, banner_onError);
+		// mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_COMPLETE, banner_onLoad);
+		// mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_IS_EMPTY, banner_onAdsEmpty);
+		// mainVKBanner.addEventListener(com.vk.MainVKBannerEvent.LOAD_ERROR, banner_onError);
 		
 		mainVKBanner.initBanner(flashVars, params);
 
@@ -59,4 +82,5 @@ class Ads
 		return mainVKBanner;
 	}
 	
+
 }
